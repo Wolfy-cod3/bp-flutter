@@ -185,5 +185,6 @@ void _dragComplete() {
 
 # More sources, please look into these:
   https://codewithandrea.com/tips/dart-flutter-easy-wins-1-7/
+  https://dart.dev/tools/linter-rules
   https://dart.dev/guides/language/effective-dart
   https://dart.dev/guides/language/effective-dart/design
