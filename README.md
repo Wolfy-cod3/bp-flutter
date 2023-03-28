@@ -3,6 +3,8 @@
 
 ##  a) Dart Best Practices
 
+## Code GuideLines:
+
 ### 1. Naming Guidelines
 
 It is a good practice to write code in such a way that it should be self-explanatory. 
@@ -129,4 +131,7 @@ function () async {
 var data = await loadData();
 // Do something…
 }
+
+## Code tips:
+
 
