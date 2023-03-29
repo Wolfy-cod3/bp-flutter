@@ -35,34 +35,34 @@ Every section should be in order, and separated by an empty line.
 
 ### Order of class property
 
-public class myClass
-{
-#region Private Members
-#endregion
-#region Public Properties
-#endregion
-#region Constructors
-#endregion
-#region Public Methods
-#endregion
-}
+      public class myClass
+      {
+      #region Private Members
+      #endregion
+      #region Public Properties
+      #endregion
+      #region Constructors
+      #endregion
+      #region Public Methods
+      #endregion
+      }
 
 ### Order of imports/export sections
 
 #### dart import ‘package:dltwallet/src/appflow/main_flow/main_tab.dart’;
-import ‘package:dltwallet/src/appflow/splash_screen.dart’;
-export ‘package:async/src/error.dart’;imports must come before other imports
+    import ‘package:dltwallet/src/appflow/splash_screen.dart’;
+    export ‘package:async/src/error.dart’;imports must come before other imports
 
-import ‘dart:async’;
-import ‘dart:html’;
-import ‘package:model/UserModel.dart’;
-import ‘package:network/HttpRequest.dart’
+    import ‘dart:async’;
+    import ‘dart:html’;
+    import ‘package:model/UserModel.dart’;
+    import ‘package:network/HttpRequest.dart’
 
 #### export should be after other imports
 
-import ‘package:dltwallet/src/appflow/main_flow/main_tab.dart’;
-import ‘package:dltwallet/src/appflow/splash_screen.dart’;
-export ‘package:async/src/error.dart’;
+    import ‘package:dltwallet/src/appflow/main_flow/main_tab.dart’;
+    import ‘package:dltwallet/src/appflow/splash_screen.dart’;
+    export ‘package:async/src/error.dart’;
 
 ## 3. Formating Guidelines
 
@@ -98,9 +98,9 @@ may change the widget type that is returned by your function. Let us take an exa
 you may prefer to wrap your widget with Center(). By returning a widget, refactoring is simplified, since the 
 method signature does not change. For Example:
 
-Widget returnContainerWidget() {
-return Center(child: Container());
-}
+    Widget returnContainerWidget() {
+    return Center(child: Container());
+    }
 
 ### Boolean
 
@@ -108,24 +108,24 @@ We can use the null check operator ‘??’ to convert null to a boolean value. 
 true or false. Although you could do this using ‘==’, using the ‘??’ operator instead is easier to use, and reduces 
 lines of code used.
 
-userProfile?.isEnabled ?? false;
+    userProfile?.isEnabled ?? false;
 
 ### Use ‘=>’ function expression
 
 You can use ‘=>’ for simple members like calculate and return value.If you are using more than one line or your code has
 nested expressions, then you can use a block body and a few statements
 
-double get driveTime(double startTime, double endTime) ‘=>’ endTime-startTime;
+    double get driveTime(double startTime, double endTime) ‘=>’ endTime-startTime;
 
 ### Use async/await
 
 For raw future functions, use aync/await. Any function you want to run asynchronously must have the async modifier added 
 to it. When you are adding the await modifier, the code is explicitly saying: “don’t go further until my future is completed”.
 
-function () async {
-var data = await loadData();
-// Do something…
-}
+    function () async {
+    var data = await loadData();
+    // Do something…
+    }
 
 # Code tips:
 
@@ -147,41 +147,42 @@ Consider this mock API class that tells us the latest numbers of COVID cases:
 To execute all these futures concurrently, use Future.wait. This takes a list or 
 futures and returns a future of lists:
 
-final api = CovidAPI();
-final values = await Future.wait([
-    api.getCases(),
-    api.getRecovered(),
-    api.getDeaths(),
-]);
-print(values); // [1000, 100, 10]
+    final api = CovidAPI();
+    final values = await Future.wait([
+        api.getCases(),
+        api.getRecovered(),
+        api.getDeaths(),
+    ]);
+    print(values); // [1000, 100, 10]
+    
 This is ideal when the futures are independent, and they don't need to execute sequentially.
 
 ## 3. Implement a "call" method in your Dart classes to make them callable like a function.
 
-class PasswordValidator {
-  bool call(String password) {
-    return password.length > 10;
-  }
-}
+    class PasswordValidator {
+      bool call(String password) {
+        return password.length > 10;
+      }
+    }
 
-final validator = PasswordValidator();
-// can use it like this:
-validator('test');
-validator('test1234');
-// no need to use it like this:
-validator.call('not-so-frozen-arctic');
+    final validator = PasswordValidator();
+    // can use it like this:
+    validator('test');
+    validator('test1234');
+    // no need to use it like this:
+    validator.call('not-so-frozen-arctic');
 
 ## 4. Need to invoke a callback but only if it's not null? Use the "?.call()" syntax.
 
-void _dragComplete() {
-    if (onDragCompleted != null) {
-      onDragCompleted();
-    }
-  }
-  But there is a simpler way (note the use of ?.):
-  Future<void> _dragComplete() async {
-    onDragCompleted?.call();
-  }
+    void _dragComplete() {
+        if (onDragCompleted != null) {
+          onDragCompleted();
+        }
+      }
+      But there is a simpler way (note the use of ?.):
+      Future<void> _dragComplete() async {
+        onDragCompleted?.call();
+      }
 
 # More sources, please look into these:
   https://codewithandrea.com/tips/dart-flutter-easy-wins-1-7/
